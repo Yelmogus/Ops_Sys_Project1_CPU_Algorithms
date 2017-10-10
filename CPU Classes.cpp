@@ -14,6 +14,7 @@ Process::Process(std::string name, std::vector<int> &stats){
     CPU_burst_time_ = stats[1];
     num_burst_ = stats[2];
     io_time_ = stats[3];
+    state_ = nothing; //should be ready, runnning or bloocked set later
 }
 
 void Process::print_process_info(){
