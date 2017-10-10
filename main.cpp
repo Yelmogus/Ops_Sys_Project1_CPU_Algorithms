@@ -17,10 +17,25 @@
 using std::string;
 using std::vector;
 
+void run_FCFS(){
+    ;
+}
+
+void run_RR(){
+    ;
+}
+
+void run_SRT(){
+    ;
+}
+
 void split(string my_str, char delimiter, vector<string> &my_words){
+    if(my_str[0] == '#'){
+        return;
+    }
     string token = "";
     for(int i = 0; i < my_str.size(); i++){
-        if(my_str[i] == delimiter){
+        if(my_str[i] == delimiter or my_str[i] == '\n'){
             my_words.push_back(token);
             token = "";
         }
@@ -28,10 +43,11 @@ void split(string my_str, char delimiter, vector<string> &my_words){
             token += my_str[i];
         }
     }
+    my_words.push_back(token);
 }
 
 void convert_int(vector<string> &my_words, vector<int> &my_stats){
-    for(int i = 1; i < 4; i++){
+    for(int i = 1; i < 5; i++){
         my_stats.push_back(stoi(my_words[i]));
     }
 }
@@ -73,6 +89,7 @@ int main(int argc, const char * argv[]) {
             vector<string> CPU_strings;
             vector<int> CPU_stats;
             split(text, '|', CPU_strings);
+            //print_container(CPU_strings);
             convert_int(CPU_strings, CPU_stats);
             Process my_process(CPU_strings[0], CPU_stats);
             my_process.print_process_info();
