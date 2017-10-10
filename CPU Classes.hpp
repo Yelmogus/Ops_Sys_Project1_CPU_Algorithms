@@ -16,6 +16,7 @@
 using std::string;
 using std::vector;
 
+enum State { ready, running, blocked, nothing};
 class Process
 {
 public:
@@ -31,6 +32,8 @@ public:
     int get_iotime() const {return io_time_;}
     
     //MODIFIERS
+    void set_state(State new_state) {state_ = new_state;}
+    
     //REPRESENTATION
     void print_process_info();
 private:
@@ -40,6 +43,7 @@ private:
     int proc_id_;
     int num_burst_;
     int io_time_;
+    State state_;
     
 };
 
